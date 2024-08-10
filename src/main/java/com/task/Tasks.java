@@ -36,18 +36,30 @@ public class Tasks implements Animal, Human {
     // ===================================================================
 
     void practice() {
+        int num = 12;
+        boolean isPrime = true;
+        for (int i = 2; i < num; i++) {
+            if (i % 2 == 0) {
+                isPrime = false;
+            }
+        }
+        System.out.println(isPrime);
+
+    }
+
+    void armstrongNumber() {
         int number = 155;
         int original = number;
         int sum = 0;
-        while (number>0){
-          int rev = number%10;
-            number = number/10;
-            sum = sum+rev*rev*rev;
+        while (number > 0) {
+            int rev = number % 10;
+            number = number / 10;
+            sum = sum + rev * rev * rev;
         }
 
-        if(original == sum){
+        if (original == sum) {
             System.out.println("its armstrong");
-        }else {
+        } else {
             System.out.println("not ARms");
         }
     }
@@ -233,11 +245,6 @@ public class Tasks implements Animal, Human {
         System.out.println(s);
         for (int i = 3; i <= count; i++) {
             t = f + s;
-            if (t >= 10) {    // checking if duble digit , shows last digit
-                System.out.println(t / 10);
-            } else {
-                System.out.println(t);
-            }
             f = s;
             s = t;
         }
