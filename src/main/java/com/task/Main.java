@@ -5,9 +5,17 @@ import org.hibernate.dialect.function.TrimFunction;
 import java.io.PrintStream;
 import java.util.function.*;
 
+abstract class Testtt{
+    public void dd(){
+
+    }
+    abstract void asd();
+}
+
 public class Main {
     public static void main(String[] a) {
         Tasks t = new Tasks();
+
         t.practice();
 
     }

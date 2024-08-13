@@ -5,50 +5,57 @@ import com.example.springboot.Employee;
 import java.util.*;
 import java.util.stream.Collectors;
 
-interface Animal {
-    void eat();
 
-    default void sleep() {
-        System.out.println("Animal Sleeping");
-    }
-}
-
-interface Human {
-    void eat();
-
-    default void sleep() {
-        System.out.println("Human Sleeping");
-    }
-}
-
-public class Tasks implements Animal, Human {
+public class Tasks implements Runnable {
     @Override
-    public void eat() {
-        System.out.println("eating....");
+    public void run() {
+        System.out.println("statred" + Thread.currentThread().getName());
     }
 
-    @Override
-    public void sleep() {
-        Animal.super.sleep();
-    }
-
-
-    // ===================================================================
 
     void practice() {
-        int num = 12;
-        boolean isPrime = true;
-        for (int i = 2; i < num; i++) {
-            if (i % 2 == 0) {
-                isPrime = false;
-            }
-        }
-        System.out.println(isPrime);
 
+    }
+
+    void removeDupsfromArray() {
+        int arr[] = {1, 2, 3, 4, 5, 5, 6};
+        int len = arr.length;
+        int unique[] = new int[len];
+        int k = 0;
+        int dupCouts = 0;
+        for (int i = 0; i < len; i++) {
+            boolean isDup = false;
+            for (int j = 0; j < unique.length; j++) {
+                if (arr[i] == unique[j]) {
+                    isDup = true;
+                    dupCouts++;
+                    break;
+                }
+            }
+            if (!isDup)
+                unique[k++] = arr[i];
+        }
+
+        int finalArr[] = new int[len - dupCouts];
+        System.out.println(finalArr.length);
+        for (int i = 0; i < unique.length - dupCouts; i++) {
+            finalArr[i] = unique[i];
+        }
+        System.out.println(Arrays.toString(finalArr));
+    }
+
+    void findDuplicateUsingStream() {
+        String arr[] = {"python", "java", "flutter", "java"};
+        Arrays.stream(arr)
+                .collect(Collectors.groupingBy(o -> o, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(s -> s.getValue() > 1)
+                .forEach(s -> System.out.println(s.getKey() + " : " + s.getValue()));
     }
 
     void armstrongNumber() {
-        int number = 155;
+        var number = 155;
         int original = number;
         int sum = 0;
         while (number > 0) {
@@ -79,7 +86,7 @@ public class Tasks implements Animal, Human {
     }
 
     void countWords() {
-        String str = "Java J2EE Java JSP J2EE";
+        var str = "Java J2EE Java JSP J2EE";
         char[] chars = str.toLowerCase().replace(" ", "").toCharArray();
 
         HashMap<Character, Integer> map = new HashMap<>();
@@ -393,6 +400,6 @@ public class Tasks implements Animal, Human {
             System.out.println("not panagram");
         }
     }
-
+//
 
 }
