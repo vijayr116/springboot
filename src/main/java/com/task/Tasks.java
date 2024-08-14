@@ -1,20 +1,78 @@
 package com.task;
-
-import com.example.springboot.Employee;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
+public class Tasks {
 
-public class Tasks implements Runnable {
-    @Override
-    public void run() {
-        System.out.println("statred" + Thread.currentThread().getName());
+    void vowelsCount() {
+        String str = "vijay";
+        str = str.replace(" ", "");
+
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char let = str.charAt(i);
+            switch (let) {
+                case 'a':
+                    count++;
+                    break;
+                case 'e':
+                    count++;
+                    break;
+                case 'i':
+                    count++;
+                    break;
+                case 'o':
+                    count++;
+                    break;
+                case 'u':
+                    count++;
+                    break;
+            }
+
+        }
+        System.out.println("Count : " + count);
+
     }
 
+    void sortNum() {
+        int[] arr = {1, 2, 3, 6, 5, 5, 4, 10, 7, 9, 8};
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
 
-    void practice() {
+    void progress() {
+        String str = "character";
+        str = str.toLowerCase();
+        String res = " ";
+        for (int i = 0; i < str.length(); i++) {
+            boolean isDup = false;
+            if (i > 0) {
+                if (str.charAt(i - 1) != str.charAt(i)) {
+                    for (int j = i + 1; j < str.length(); j++) {
+                        if (str.charAt(i) == (str.charAt(j))) {
+                            isDup = true;
+                            break;
+                        }
+                    }
+                    if (!isDup) {
+                        res = String.valueOf(str.charAt(i));
+                        break;
+                    } else {
+                        res = "None";
+                    }
+                }
+            }
 
+        }
+        System.out.println("First Non-Repeating Character : " + res);
     }
 
     void removeDupsfromArray() {
@@ -37,7 +95,6 @@ public class Tasks implements Runnable {
         }
 
         int finalArr[] = new int[len - dupCouts];
-        System.out.println(finalArr.length);
         for (int i = 0; i < unique.length - dupCouts; i++) {
             finalArr[i] = unique[i];
         }
@@ -52,6 +109,7 @@ public class Tasks implements Runnable {
                 .stream()
                 .filter(s -> s.getValue() > 1)
                 .forEach(s -> System.out.println(s.getKey() + " : " + s.getValue()));
+
     }
 
     void armstrongNumber() {
@@ -400,6 +458,6 @@ public class Tasks implements Runnable {
             System.out.println("not panagram");
         }
     }
-//
+
 
 }
