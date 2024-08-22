@@ -2,9 +2,6 @@ package com.example.springboot;
 
 public class Employee {
 
-    static{
-        System.out.println("static called");
-    }
     private String name;
     private int age;
     private double salary;

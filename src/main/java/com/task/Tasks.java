@@ -4,6 +4,85 @@ import java.util.stream.Collectors;
 
 public class Tasks {
 
+    void streamExercises() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 6, 2, 3);
+//        double d = list.stream().mapToInt(value -> value).average().getAsDouble();
+//
+//       Double ans = list.stream().map(v->v*v)
+//                .filter(v->v>100)
+//                .mapToInt(v->v).average().getAsDouble();
+//
+//       list = list.stream().filter(v->v%2==0).toList();
+
+//       list = list.stream()
+//               .map(v->String.valueOf(v))
+//               .filter(v-> v.startsWith("2") | v.startsWith("-2"))
+//               .map(Integer::valueOf)
+//               .collect(Collectors.toList());
+
+//        Set<Integer> s = list.stream()
+//                .filter(e -> Collections.frequency(list, e) > 1)
+//                .collect(Collectors.toSet());
+//        Set<Integer> dup = new HashSet<>();
+//        Set<Integer> collect = list.stream().filter(e -> !dup.add(e))
+//                .collect(Collectors.toSet());
+
+//        int max = list.stream().min(Comparator.comparingInt(Integer::valueOf)).get();
+
+//        list = list.stream().sorted(Comparator.reverseOrder()).toList();
+
+//       int sum =  list.stream().limit(5).collect(Collectors.summingInt(e->e));
+//       int sum = list.stream().limit(5).collect(Collectors.toList()).stream().reduce((a,b)->a+b).get();
+
+//        int secondLowest = list.stream().distinct().sorted().skip(1).findFirst().get();
+//        int secondHighest = list.stream()
+//                .distinct()
+//                .sorted(Comparator.reverseOrder())
+//                .skip(1).findFirst().get();
+//        System.out.println(secondLowest);
+//        System.out.println(secondHighest);
+    }
+
+    void practice() {
+        String str = "MrtyNNgMM";
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+            if (currentChar == 'M') {
+                if (res.length() > 0) {
+                    char pre = str.charAt(res.length() - 1);
+                    res.append(pre);
+                }
+            } else if (currentChar == 'N') {
+                i++;
+            } else {
+                res.append(currentChar);
+            }
+        }
+        System.out.println(res);
+    }
+
+    void rotateArray() {
+
+        int[] arr = {5, 4, 3, 4, 5, 6, 1, 2};
+        int[] res = new int[arr.length];
+        int firstIndex = arr[0];
+        int index = 0;
+        String ans = "";
+
+        for (int i = firstIndex; i < arr.length; i++) {
+            res[index++] = arr[i];
+        }
+        for (int i = 0; i < firstIndex; i++) {
+            res[index++] = arr[i];
+        }
+        for (int i : res) {
+            ans = ans + i;
+        }
+        System.out.println(ans);
+
+    }
+
     void vowelsCount() {
         String str = "vijay";
         str = str.replace(" ", "");
@@ -49,7 +128,7 @@ public class Tasks {
     }
 
     void progress() {
-        String str = "character";
+        String str = "dkl";
         str = str.toLowerCase();
         String res = " ";
         for (int i = 0; i < str.length(); i++) {
@@ -73,6 +152,37 @@ public class Tasks {
 
         }
         System.out.println("First Non-Repeating Character : " + res);
+    }
+
+    void sum() {
+        String str = "vijay";
+        String repeated = null;
+        for (int i = 0; i < str.length(); i++) {
+            boolean isdup = false;
+            for (int j = i + 1; j < str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j)) {
+                    repeated = String.valueOf(str.charAt(i));
+                    isdup = true;
+                    break;
+                }
+            }
+            if (isdup) {
+                break;
+            }
+        }
+        System.out.println(repeated);
+    }
+
+    void largestWord() {
+        String str = "The quick brown fox jumps";
+        String arr[] = str.split(" ");
+        String large = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i].length() > large.length()) {
+                large = arr[i];
+            }
+        }
+        System.out.println("Largest : " + large);
     }
 
     void removeDupsfromArray() {
@@ -129,7 +239,7 @@ public class Tasks {
         }
     }
 
-    void preserviceSpace() {
+    void preserveSpace() {
         String str = "I am not a String";
         // g ni rtS a tonmaI
         StringBuilder stringBuffer = new StringBuilder(str.replace(" ", ""));
@@ -144,6 +254,7 @@ public class Tasks {
     }
 
     void countWords() {
+
         var str = "Java J2EE Java JSP J2EE";
         char[] chars = str.toLowerCase().replace(" ", "").toCharArray();
 
@@ -213,7 +324,7 @@ public class Tasks {
         }
     }
 
-    void findMaxandMinnum() {
+    void findMaxAndMinimum() {
         int arr[] = {20, 30, 40, 60, 10, 5, 39, 50};
         int max = arr[0];
         int min = arr[0];
@@ -230,7 +341,7 @@ public class Tasks {
         System.out.println(min);
     }
 
-    void sumOfArrayElemets() {
+    void sumOfArrayElements() {
         int arr[] = {5, 2, 7, 9, 6};
         int sum = 0;
         for (int i : arr) {
@@ -296,7 +407,7 @@ public class Tasks {
             reverse = reverse * 10 + last;
             num = num / 10;
         }
-        System.out.println("Reversed :" + reverse);
+        System.out.println("Reversed : " + reverse);
 
     }
 
@@ -459,5 +570,5 @@ public class Tasks {
         }
     }
 
-
 }
+
