@@ -18,3 +18,19 @@ public class SingletonClass {
     }
 
 }
+
+
+abstract class AbTest{
+    abstract void sum();
+    abstract void mul();
+    public void print(){
+        System.out.println("Printed Abstract class");
+    }
+}
+
+interface IfTest{
+    void sum();
+    default void print(){
+        System.out.println("Printed Interface");
+    }
+}

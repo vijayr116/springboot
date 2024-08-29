@@ -1,6 +1,10 @@
 package com.task;
+
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Tasks {
 
@@ -41,6 +45,64 @@ public class Tasks {
 //                .skip(1).findFirst().get();
 //        System.out.println(secondLowest);
 //        System.out.println(secondHighest);
+
+
+        //        System.out.println(res);
+
+    }
+
+    void trying() {
+    }
+
+    void stream2() {
+        List<Student> students = Arrays.asList(
+                new Student(1, "vijay", 20, "Male", "Computer Science", "New York", 5, Arrays.asList("1234567890", "0987654321")),
+                new Student(2, "Jane Smith", 22, "Female", "Electrical Engineering", "Los Angeles", 3, Arrays.asList("2345678901", "9876543210")),
+                new Student(3, "Michael Johnson", 21, "Male", "Mechanical Engineering", "Chicago", 7, Arrays.asList("3456789012", "8765432109")),
+                new Student(4, "Emily Davis", 23, "Female", "Civil Engineering", "Kumbakonam", 2, Arrays.asList("4567890123", "7654321098")),
+                new Student(5, "David Brown", 24, "Male", "Information Technology", "Kumbakonam", 8, Arrays.asList("5678901234", "6543210987")),
+                new Student(6, "Sarah Wilson", 22, "Female", "Chemical Engineering", "Kumbakonam", 4, Arrays.asList("6789012345", "5432109876")),
+                new Student(7, "James Miller", 20, "Male", "Aerospace Engineering", "San Antonio", 6, Arrays.asList("7890123456", "4321098765")),
+                new Student(8, "Olivia Martinez", 21, "Female", "Biomedical Engineering", "San Diego", 1, Arrays.asList("8901234567", "3210987654")),
+                new Student(9, "William Garcia", 23, "Male", "Computer Science", "Dallas", 9, Arrays.asList("9012345678", "2109876543")),
+                new Student(10, "Sophia Rodriguez", 24, "Female", "Environmental Engineering", "San Jose", 10, Arrays.asList("0123456789", "1098765432"))
+        );
+
+//        students.stream().filter(student->student.getRank()>5 & student.getRank()<10).forEach(s-> System.out.println(s));
+//        students.stream().filter(student -> student.getCity().equals("Kumbakonam"))
+//                .sorted(Comparator.comparing(s->s.getName())).forEach(System.out::println);
+//        List<String> sl = students.stream().flatMap(s -> s.getContactNumbers().stream()).distinct().toList();
+//        Map.Entry<String, Long> stringLongEntry = students.stream().collect(Collectors.groupingBy(Student::getDepartment, Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()).get();
+//        Set<Map.Entry<String, Double>> entries = students.stream().collect(Collectors.groupingBy(Student::getGender, Collectors.averagingInt(s->s.getAge()))).entrySet();
+//        Set<Map.Entry<String, Optional<Student>>> entries = students.stream().collect(Collectors.groupingBy(Student::getDepartment, Collectors.minBy(Comparator.comparingInt(s -> s.getRank())))).entrySet();
+        Student student = students.stream().sorted(Comparator.comparingInt(s -> s.getRank())).skip(1).findFirst().get();
+        System.out.println(student);
+
+    }
+
+    void stream3() {
+        String str = "ilovejavatechie";
+        String arr[] = str.split("");
+//        Map<String,Long> res =Arrays.stream(arr).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+
+//        List<String> list = Arrays.stream(arr).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+//                .entrySet()
+//                .stream()
+//                .filter(s -> s.getValue() == 1).map(s -> s.getKey()).toList();
+
+//        Map<String, Long> collect = Arrays.stream(arr).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new, Collectors.counting()));
+//        Map.Entry<String, Long> stringLongEntry = collect.entrySet().stream().filter(s -> s.getValue() == 1).findFirst().get();
+//        System.out.println(stringLongEntry.getKey());
+
+        int intArr[] = {5, 9, 11, 2, 8, 21, 1};
+//        int min = Arrays.stream(intArr).boxed().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
+
+        Arrays.stream(intArr).boxed().map(n -> n.toString()).filter(s -> s.startsWith("1")).forEach(System.out::println);
+
+//        String[] strings = {"java","techie","Springboot","Microservices"};
+//        String max = Arrays.stream(strings).min(Comparator.comparingInt(String::length)).get();
+
+//        System.out.println(max);
     }
 
     void practice() {
@@ -115,6 +177,7 @@ public class Tasks {
 
     void sortNum() {
         int[] arr = {1, 2, 3, 6, 5, 5, 4, 10, 7, 9, 8};
+
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[i] > arr[j]) {
@@ -227,15 +290,15 @@ public class Tasks {
         int original = number;
         int sum = 0;
         while (number > 0) {
-            int rev = number % 10;
+            int last = number % 10;
             number = number / 10;
-            sum = sum + rev * rev * rev;
+            sum = sum + last * last * last;
         }
 
         if (original == sum) {
-            System.out.println("its armstrong");
+            System.out.println("its armstrong" + sum);
         } else {
-            System.out.println("not ARms");
+            System.out.println("not ARms ");
         }
     }
 
