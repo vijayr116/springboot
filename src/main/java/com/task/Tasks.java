@@ -1,19 +1,20 @@
 package com.task;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Tasks {
+    void hi(String... b) {
+        System.out.println(b.toString());
+    }
 
     void streamExercises() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 6, 2, 3);
+        Set<Integer> ss = list.stream().filter(s -> Collections.frequency(list, s) > 1).collect(Collectors.toSet());
 //        double d = list.stream().mapToInt(value -> value).average().getAsDouble();
 //
 //       Double ans = list.stream().map(v->v*v)
-//                .filter(v->v>100)
+//                .filter(v->v>10)
 //                .mapToInt(v->v).average().getAsDouble();
 //
 //       list = list.stream().filter(v->v%2==0).toList();
@@ -23,13 +24,19 @@ public class Tasks {
 //               .filter(v-> v.startsWith("2") | v.startsWith("-2"))
 //               .map(Integer::valueOf)
 //               .collect(Collectors.toList());
+//
+//        System.out.println(list);
 
-//        Set<Integer> s = list.stream()
-//                .filter(e -> Collections.frequency(list, e) > 1)
-//                .collect(Collectors.toSet());
+
+        Set<Integer> s = list.stream()
+                .filter(e -> Collections.frequency(list, e) > 1)
+                .collect(Collectors.toSet());
 //        Set<Integer> dup = new HashSet<>();
 //        Set<Integer> collect = list.stream().filter(e -> !dup.add(e))
 //                .collect(Collectors.toSet());
+
+        System.out.println(s);
+
 
 //        int max = list.stream().min(Comparator.comparingInt(Integer::valueOf)).get();
 
@@ -45,13 +52,15 @@ public class Tasks {
 //                .skip(1).findFirst().get();
 //        System.out.println(secondLowest);
 //        System.out.println(secondHighest);
-
-
         //        System.out.println(res);
 
     }
 
     void trying() {
+//        String str = "The quick brown fox jumps";
+        HashMap<String, String> hashtable = new HashMap<>();
+        hashtable.put(null, null);
+        System.out.println(hashtable);
     }
 
     void stream2() {
@@ -95,7 +104,7 @@ public class Tasks {
 //        System.out.println(stringLongEntry.getKey());
 
         int intArr[] = {5, 9, 11, 2, 8, 21, 1};
-//        int min = Arrays.stream(intArr).boxed().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
+        int min = Arrays.stream(intArr).boxed().sorted(Comparator.reverseOrder()).limit(2).findFirst().get();
 
         Arrays.stream(intArr).boxed().map(n -> n.toString()).filter(s -> s.startsWith("1")).forEach(System.out::println);
 
@@ -422,6 +431,42 @@ public class Tasks {
         System.out.println("your factorial is " + factorial);
     }
 
+    void testMe(){
+        int n = 10;
+        int n1=0;
+        int n2 =1;
+        System.out.println(n1);
+        System.out.println(n2);
+        for(int i = 2; i<n;i++){
+            int t = n1+n2;
+            System.out.println(t);
+            n1=n2;
+            n2 =t;
+        }
+    }
+
+
+
+
+    int lastLength() {
+//        String str = "  fly me    to   the moon  ";
+        String str = " welcome to java  ";
+//        str = str.trim();
+        int count = 0;
+//        for (int i = str.length() - 1; i >= 0; i--) {
+//            char c = str.charAt(i);
+//            if (c == ' ') break;
+//            count++;
+//        }
+
+        String[] sArr = str.trim().split(" ");
+        count= sArr[sArr.length-2].length();
+
+
+        return count;
+    }
+
+
     void sumOfNums() {
         int num = 1234;
         int sum = 0;
@@ -503,17 +548,17 @@ public class Tasks {
     }
 
     void testFindWordOccurences(String str) {
-        String words[] = str.split(" ");
+        String[] words = str.split(" ");
         HashMap<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < words.length; i++) {
-            if (!map.containsKey(words[i])) {
-                map.put(words[i], 1);
+        for (String word : words) {
+            if (!map.containsKey(word)) {
+                map.put(word, 1);
             } else {
-                map.put(words[i], map.get(words[i]) + 1);
+                map.put(word, map.get(word) + 1);
             }
         }
         List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
-        list.stream().forEach(s -> System.out.println(s.getKey() + " : " + s.getValue()));
+        list.forEach(s -> System.out.println(s.getKey() + " : " + s.getValue()));
     }
 
     boolean findPrimeNum(int num) {
@@ -521,6 +566,7 @@ public class Tasks {
         for (int i = 2; i < num; i++) {
             if (num % i == 0) {
                 isPrime = false;
+                break;
             }
         }
         return isPrime;
@@ -596,10 +642,10 @@ public class Tasks {
     void sortMap() {
         HashMap<Integer, String> map = new HashMap<>();
         map.put(1, "vijay");
-        map.put(2, "ajith");
+        map.put(2, "fajita");
         Set<Map.Entry<Integer, String>> entryList = map.entrySet();
         List<Map.Entry<Integer, String>> list = new ArrayList<>(entryList);
-        Collections.sort(list, Map.Entry.comparingByValue());
+        list.sort(Map.Entry.comparingByValue());
         System.out.println(list);
     }
 
@@ -616,6 +662,46 @@ public class Tasks {
             System.out.println("not anagram");
         }
     }
+
+    public void fibo(int n) {
+        int n1 = 0;
+        int n2 = 1;
+        int counter = 0;
+        while (n > counter) {
+            System.out.println(n1);
+            int n3 = n1 + n2;
+            n1 = n2;
+            n2 = n3;
+            counter++;
+        }
+    }
+
+    boolean primeNum(int num) {
+        if (num < 2) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
+
+    boolean arms(int num) {
+        int original = num;
+        int sum = 0;
+        while (num > 0) {
+            int last = num % 10;
+            num = num / 10;
+            sum = sum + last * last * last;
+        }
+        System.out.println(original == sum);
+        return original == sum;
+    }
+
+    void find2ndLarge(int[] arr) {
+        int res = Arrays.stream(arr).boxed().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+        System.out.println(res);
+    }
+
 
     void checkPangram(String str) {
         str = str.toLowerCase();

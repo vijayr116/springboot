@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface StudentDao extends JpaRepository<Student,Integer> {
     List<Student> findByName(String name);
+
+
 }

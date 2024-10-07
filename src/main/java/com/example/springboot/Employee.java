@@ -1,6 +1,8 @@
 package com.example.springboot;
 
-public class Employee {
+import java.util.Comparator;
+
+public class Employee implements Comparator<Employee> {
 
     private String name;
     private int age;
@@ -11,7 +13,7 @@ public class Employee {
         this.age = age;
         this.salary = salary;
     }
-    Employee(){
+    public Employee(){
 
     }
 
@@ -50,5 +52,11 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+
+    @Override
+    public int compare(Employee o1, Employee o2) {
+        return 0;
     }
 }
